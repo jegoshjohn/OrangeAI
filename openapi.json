@@ -1,0 +1,356 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/health_check": {
+            "get": {
+                "summary": "Health Check",
+                "operationId": "health_check_health_check_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "summary": "Root Redirect",
+                "operationId": "root_redirect__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/{email_id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User",
+                "operationId": "get_user_api_v1_user__email_id__get",
+                "parameters": [
+                    {
+                        "name": "email_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "title": "Email Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create User",
+                "operationId": "create_user_api_v1_user_put",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chat": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create Chat",
+                "description": "Create a chat message with historical context for the user\n\nArgs:\n    chat_payload (AIChatInput): The chat payload\n\nReturns:\n    _type_: _description_",
+                "operationId": "create_chat_api_v1_chat_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AIChatInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Delete Chats",
+                "description": "Delete chat messages for the user\n\nArgs:\n    email_id (_type_): Email ID of the user\n\nReturns:\n    _type_: _description_",
+                "operationId": "delete_chats_api_v1_chat_delete",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AIChatDeleteRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/chat/{email_id}": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get Chats",
+                "description": "Get chat messages for the user\n\nArgs:\n    email_id (_type_): Email ID of the user\n\nReturns:\n    _type_: _description_",
+                "operationId": "get_chats_api_v1_chat__email_id__get",
+                "parameters": [
+                    {
+                        "name": "email_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "title": "Email Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AIChatDeleteRequest": {
+                "properties": {
+                    "email_id": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email_id"
+                ],
+                "title": "AIChatDeleteRequest"
+            },
+            "AIChatInput": {
+                "properties": {
+                    "chat_msg": {
+                        "type": "string",
+                        "title": "Chat Msg"
+                    },
+                    "email_id": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email Id"
+                    },
+                    "chat_ts": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Chat Ts",
+                        "default": "2024-02-16T14:54:27.376117"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "chat_msg",
+                    "email_id"
+                ],
+                "title": "AIChatInput"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "User": {
+                "properties": {
+                    "email_id": {
+                        "type": "string",
+                        "format": "email",
+                        "title": "Email Id"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "title": "First Name"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "title": "Last Name"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email_id",
+                    "first_name",
+                    "last_name"
+                ],
+                "title": "User"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}
